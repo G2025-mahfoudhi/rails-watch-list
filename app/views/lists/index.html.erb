@@ -1,21 +1,27 @@
 <%# <h1>Lists#index</h1>
 <p>Find me in app/views/lists/index.html.erb</p> %>
 
-<div class="container mt-4">
-  <div class="mb-4">
-    <h1>My Watch Lists</h1>
+<div class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1600')">
+  <div class="hero-content text-center text-white">
+    <h1>Save any kind of movies</h1>
+    <p>Create your own movie lists</p>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My Lists</h2>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
   </div>
 
   <div class="row">
     <% @lists.each do |list| %>
-      <div class="col-md-4 mb-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= list.name %></h5>
-            <p class="card-text"><%= list.movies.count %> movie(s)</p>
-            <%= link_to "See list", list_path(list), class: "btn btn-outline-primary" %>
+      <div class="col-md-4 mb-4">
+        <%= link_to list_path(list), class: "card-list text-decoration-none" do %>
+          <div class="card-img-overlay-custom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('<%= list.image_url %>')">
+            <h3 class="text-white"><%= list.name %></h3>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
