@@ -1,7 +1,7 @@
 <%# <h1>Lists#show</h1>
 <p>Find me in app/views/lists/show.html.erb</p> %>
 
-<<div class="hero" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= @list.image_url %>')">
+<div class="hero" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : @list.image_url %>')">
   <div class="hero-content text-center text-white">
     <h1><%= @list.name %></h1>
   </div>
@@ -9,6 +9,8 @@
     <%= @list.movies.count %> movies
   </span>
 </div>
+
+
 
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-4">

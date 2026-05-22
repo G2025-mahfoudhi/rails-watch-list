@@ -18,7 +18,7 @@
     <% @lists.each do |list| %>
       <div class="col-md-4 mb-4">
         <%= link_to list_path(list), class: "card-list text-decoration-none" do %>
-          <div class="card-img-overlay-custom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('<%= list.image_url %>')">
+          <div class="card-img-overlay-custom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('<%= list.photo.attached? ? cl_image_path(list.photo.key) : list.image_url %>')">
             <h3 class="text-white"><%= list.name %></h3>
           </div>
         <% end %>
